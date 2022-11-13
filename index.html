@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- thu vien bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- thu vien hightchart -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <title>IOT</title>
+</head>
+<body style="background-color: #1C2632;">
+    <div class="my-4" style="margin-left: 50px;">
+        <h1 class="text-white"><small>HOME</small></h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-3">
+            <div class="position-absolute d-flex flex-column text-center" style="margin-left: 15%;">
+              <img src="./images/avatar.png" alt="avatar" class="d-flex mx-auto" width="150px" height="150px">
+              <h6 class="text-info" style="color: #2DDDF5;">Rina Hoang</h6>
+            </div>
+            <div class=" d-flex flex-column h-65 p-4" 
+                style="margin-top: 120px; 
+                      margin-left: -10px; 
+                      margin-right: 50px; 
+                      border-top-right-radius: 20px;
+                      border-bottom-right-radius: 20px; 
+                      background-color: #283142;"
+            >
+              <button type="button" class="btn btn-outline-secondary border-0 text-white mb-2 py-2 px-4 d-flex" style="margin-top: 50px;">
+                <img src="./icons/icons/dashboard.png" alt="dashboard" width="25px" height="25px" class="mr-4">
+                Dashboard
+              </button>
+            
+              <button type="button" class="btn btn-outline-secondary  border-0 text-white mb-2 py-2 px-4 d-flex">
+                <img src="./icons/icons/devices.png" alt="devices" width="25px" height="25px" class="mr-4">
+                Devices
+              </button>
+              
+              <button type="button" class="btn btn-outline-secondary border-0 text-white mb-2 py-2 px-4 d-flex">
+                <img src="./icons/icons/security.png" alt="security" width="25px" height="25px" class="mr-4">
+                Security
+              </button>
+
+              <button type="button" class="btn btn-outline-secondary border-0 text-white py-2 px-4 d-flex" style="margin-top: 100px;">
+                <img src="./icons/icons/log-out.png" alt="log-out" width="25px" height="25px" class="mr-4">
+                Log out
+              </button>
+            </div>
+          </div>
+          <div class="col-9 d-flex">
+            <div class="col-6">
+              <div class="mb-4">
+                <img src="./images/homeView1.jpg" 
+                width="100%"
+                height="250px" 
+                class="mx-auto d-block rounded"
+                alt="anh"
+                >
+              </div>
+              <div style="border-radius: 10px; background-color: #283142; width: 100%; padding: 10px;">
+                <div id="container" style="width: 90%; height:230px; margin: 0 auto; border-radius: 10px;">
+                </div>  
+              </div>
+              
+              
+            </div>
+            <div class="col-6">
+              <div class="mb-4">
+                <div class="d-flex mx-auto mb-4">
+                  <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
+                    <img class="float-right mr-2 mt-2" src="/icons/icons/clock.png" alt="clock" width="25px" height="25px">
+                    
+                  </div>
+                  <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
+                    <img class="float-right mr-2 mt-2" src="/icons/icons/light.png" alt="clock" width="25px" height="25px">
+                    <div class="text-white ml-2 mt-2">
+                      Light
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex mx-auto mb-4">
+                  <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
+                    <img class="float-right mr-2 mt-2" src="/icons/icons/temparature.png" alt="clock" width="25px" height="25px">
+                    <div class="text-white ml-2 mt-2">
+                      Temperature
+                    </div>
+                  </div>
+                  <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
+                    <img class="float-right mr-2 mt-2" src="/icons/icons/humidity.png" alt="clock" width="25px" height="25px">
+                    <div class="text-white ml-2 mt-2">
+                      Humidity
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="">
+                <div class="d-flex mx-auto mb-3">
+                  <div class="w-100 mr-3 rounded" style="height: 122px; background-color: #283142;">
+                    <img class="float-right mr-2 mt-2" src="/icons/icons/fan.png" alt="clock" width="25px" height="25px">
+                    <div class="text-white ml-2 mt-2">
+                      Ventilation system
+                    </div>
+                    <div class="d-flex btn-group-sm ml-2" style="margin-top: 35px;">
+                      <button type="button" class="btn btn-primary mr-2"style="width: 70px;">On</button>
+                      <button type="button" class="btn btn-danger" style="width:70px;">Off</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex mx-auto">
+                  <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
+                    <img class="float-right mr-2 mt-2" src="/icons/icons/light2.png" alt="clock" width="25px" height="25px">
+                    <div class="text-white ml-2 mt-2">
+                      Indoor lighting<br>system
+                    </div>
+                    <div class="custom-control custom-switch ml-2 mt-4">
+                      <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+                      <label class="custom-control-label" for="switch1" style="padding-bottom: 15px;width:35px;"></label>
+                    </div>
+                  </div>
+                  <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
+                    <img class="float-right mr-2 mt-2" src="/icons/icons/light2.png" alt="clock" width="25px" height="25px">
+                    <div class="text-white ml-2 mt-2">
+                      Outside light<br> system
+                    </div>
+                    <div class="custom-control custom-switch ml-2 mt-4">
+                      <input type="checkbox" class="custom-control-input" id="switch2" name="example">
+                      <label class="custom-control-label" for="switch2" style="padding-bottom: 15px;width:35px;"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script>
+      $(function () {
+        $('#container').highcharts({
+          chart: {
+            backgroundColor: 'black',
+          },
+          title: {
+            text: "Data Weather",
+            style: {
+              color: "white",
+            }
+          },
+          xAxis: {
+              categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+          },
+          yAxis: {
+              title: {
+                  text: 'Temperature (°C)'
+              },
+              plotLines: [{
+                  value: 0,
+                  width: 1,
+                  color: '#808080'
+              }]
+          },
+          tooltip: {
+              valueSuffix: '°C'
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle',
+              borderWidth: 0
+          },
+          series: [{
+              name: 'Light',
+              data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+          }, {
+              name: 'Humidity',
+              data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+          }, {
+              name: 'Temperature',
+              data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+          }]
+        });
+      });
+
+
+    </script>
+</body>
+</html>
