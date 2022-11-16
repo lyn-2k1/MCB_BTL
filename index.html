@@ -17,19 +17,18 @@
 </head>
 <body style="background-color: #1C2632;">
     <div class="my-4" style="margin-left: 50px;">
-        <h1 class="text-white"><small>HOME</small></h1>
+        <h1 class="text-white"><small>MY HOME</small></h1>
     </div>
     <div class="container-fluid">
         <div class="row">
-          <div class="col-3">
-            <div class="position-absolute d-flex flex-column text-center" style="margin-left: 15%;">
-              <img src="./images/avatar.png" alt="avatar" class="d-flex mx-auto" width="150px" height="150px">
+          <div class="col-2">
+            <div class="position-absolute d-flex flex-column text-center" style="margin-left: 11%;">
+              <img src="./images/avatar.png" alt="avatar" class="d-flex mx-auto" width="130px" height="130px">
               <h6 class="text-info" style="color: #2DDDF5;">Rina Hoang</h6>
             </div>
             <div class=" d-flex flex-column h-65 p-4" 
-                style="margin-top: 120px; 
+                style="margin-top: 100px; 
                       margin-left: -10px; 
-                      margin-right: 50px; 
                       border-top-right-radius: 20px;
                       border-bottom-right-radius: 20px; 
                       background-color: #283142;"
@@ -55,7 +54,7 @@
               </button>
             </div>
           </div>
-          <div class="col-9 d-flex">
+          <div class="col-10 d-flex">
             <div class="col-6">
               <div class="mb-4">
                 <img src="./images/homeView1.jpg" 
@@ -77,12 +76,19 @@
                 <div class="d-flex mx-auto mb-4">
                   <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
                     <img class="float-right mr-2 mt-2" src="/icons/icons/clock.png" alt="clock" width="25px" height="25px">
-                    
+                    <div class="text-white d-flex flex-column mt-4 text-center">
+                      <h5 id="time"></h5>
+                      <h6 id="date"></h6>
+                    </div>
                   </div>
                   <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
                     <img class="float-right mr-2 mt-2" src="/icons/icons/light.png" alt="clock" width="25px" height="25px">
                     <div class="text-white ml-2 mt-2">
-                      Light
+                      Light 
+                    </div>
+                    <div class="float-right d-flex text-white mt-4">
+                      <h3 id="light" class="mr-2 mt-1"></h3>
+                      <h2>Lux</h2>
                     </div>
                   </div>
                 </div>
@@ -92,11 +98,19 @@
                     <div class="text-white ml-2 mt-2">
                       Temperature
                     </div>
+                    <div class="float-right d-flex text-white mt-4">
+                      <h3 id="temperature" class="mr-2 mt-1"></h3>
+                      <h2>°C</h2>
+                    </div>
                   </div>
                   <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
                     <img class="float-right mr-2 mt-2" src="/icons/icons/humidity.png" alt="clock" width="25px" height="25px">
                     <div class="text-white ml-2 mt-2">
                       Humidity
+                    </div>
+                    <div class="float-right d-flex text-white mt-4">
+                      <h3 id="humidity" class="mr-2 mt-1"></h3>
+                      <h2>%</h2>
                     </div>
                   </div>
                 </div>
@@ -106,11 +120,11 @@
                   <div class="w-100 mr-3 rounded" style="height: 122px; background-color: #283142;">
                     <img class="float-right mr-2 mt-2" src="/icons/icons/fan.png" alt="clock" width="25px" height="25px">
                     <div class="text-white ml-2 mt-2">
-                      Ventilation system
+                      Ventilation system             
                     </div>
                     <div class="d-flex btn-group-sm ml-2" style="margin-top: 35px;">
-                      <button type="button" class="btn btn-primary mr-2"style="width: 70px;">On</button>
-                      <button type="button" class="btn btn-danger" style="width:70px;">Off</button>
+                      <button type="button" class="btn btn-primary mr-2" onclick="onVentilation()" style="width: 70px;">On</button>
+                      <button type="button" class="btn btn-danger" onclick="offVentilation()" style="width:70px;">Off</button>
                     </div>
                   </div>
                 </div>
@@ -120,19 +134,19 @@
                     <div class="text-white ml-2 mt-2">
                       Indoor lighting<br>system
                     </div>
-                    <div class="custom-control custom-switch ml-2 mt-4">
+                    <div class="custom-control custom-switch ml-2 mt-4" >
                       <input type="checkbox" class="custom-control-input" id="switch1" name="example">
-                      <label class="custom-control-label" for="switch1" style="padding-bottom: 15px;width:35px;"></label>
+                      <label class="custom-control-label" for="switch1" onclick="indoorLighting()" style="padding-bottom: 15px;width:35px;"></label>
                     </div>
                   </div>
                   <div class="w-100 mr-3 rounded" style="height: 112px; background-color: #283142;">
                     <img class="float-right mr-2 mt-2" src="/icons/icons/light2.png" alt="clock" width="25px" height="25px">
                     <div class="text-white ml-2 mt-2">
-                      Outside light<br> system
+                      Outside lighting<br> system
                     </div>
                     <div class="custom-control custom-switch ml-2 mt-4">
                       <input type="checkbox" class="custom-control-input" id="switch2" name="example">
-                      <label class="custom-control-label" for="switch2" style="padding-bottom: 15px;width:35px;"></label>
+                      <label class="custom-control-label" for="switch2"  onclick="outSideLighting()" style="padding-bottom: 15px;width:35px;"></label>
                     </div>
                   </div>
                 </div>
@@ -188,6 +202,63 @@
           }]
         });
       });
+
+      function getTime() {
+        var date = new Date().toLocaleDateString();
+        var time = new Date().toLocaleTimeString();
+        document.getElementById('date').innerText= date;
+        document.getElementById('time').innerText= time;
+      }
+      setInterval(getTime,100);
+
+      function getLight(value) {
+        if(!value) {
+          document.getElementById('light').innerText = 0;
+        }
+        else {
+          document.getElementById('light').innerText = value;
+        }
+      }
+      function getTemperature(value) {
+        if(!value) {
+          document.getElementById('temperature').innerText = 0;
+        }
+        else {
+          document.getElementById('temperature').innerText = value;
+        }
+      }
+      function getHumidity(value) {
+        if(!value) {
+          document.getElementById('humidity').innerText = 0;
+        }
+        else {
+          document.getElementById('humidity').innerText = value;
+        }
+      }
+      getLight(0);
+      getTemperature(0);
+      getHumidity(0);
+      function onVentilation(){
+        confirm("You want to turn on the Ventilation System?");
+      }
+
+      function offVentilation(){
+        confirm("You want to turn off the Ventilation System?");
+      }
+
+      function indoorLighting(){
+        // var res = confirm("You want to turn on the Indoor lighting system?");
+        // if(res){
+
+        // }
+        console.log(document.getElementById("switch1").value);
+        // console.log(res);
+      }
+
+      function outSideLighting(){
+        confirm("You want to turn on the Outside lighting system?");
+      }
+
 
 
     </script>
